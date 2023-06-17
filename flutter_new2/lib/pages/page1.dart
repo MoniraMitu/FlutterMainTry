@@ -1,85 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_new2/pages/page1.dart';
-import 'package:flutter_new2/pages/page3.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
-void main() {
-  runApp(MyWidget());
-}
-
-displayToastMassage(String massage, BuildContext) {
-  Fluttertoast.showToast(msg: massage);
-}
-
-class MyWidget2 extends StatelessWidget {
-  const MyWidget2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          body: Center(
-              child: ElevatedButton(
-        onPressed: () {
-          displayToastMassage("HIIIIIII", context);
-        },
-        child: Text("click here"),
-      ))),
-    );
-  }
-}
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyWidget4(),
-    );
-  }
-}
-
-class MyWidget4 extends StatefulWidget {
-  const MyWidget4({super.key});
-
-  @override
-  State<MyWidget4> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget4> {
-  var _currentState = 0;
-  final pages = [
-    MyWidget5(),
-    MyWidget2(),
-    Page1(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentState,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.message), label: "Message"),
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: "List"),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentState = index;
-          });
-        },
-      ),
-      body: pages[_currentState],
-    );
-  }
-}
-
-// class Final {}
-
-class MyWidget3 extends StatelessWidget {
-  const MyWidget3({super.key});
+class MyWidget5 extends StatelessWidget {
+  const MyWidget5({super.key});
 
   @override
   Widget build(BuildContext context) {
