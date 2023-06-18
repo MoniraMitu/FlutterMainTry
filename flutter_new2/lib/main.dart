@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_new2/buttonPage2.dart';
+import 'package:flutter_new2/buttonPage3.dart';
+import 'package:flutter_new2/buttonPge1.dart';
 import 'package:flutter_new2/pages/page1.dart';
 import 'package:flutter_new2/pages/page3.dart';
+import 'package:flutter_new2/tabRouting.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
-  runApp(MyWidget());
+  runApp(Routing());
 }
 
 displayToastMassage(String massage, BuildContext) {
@@ -25,6 +29,33 @@ class MyWidget2 extends StatelessWidget {
         },
         child: Text("click here"),
       ))),
+    );
+  }
+}
+
+class AppTabRoute extends StatelessWidget {
+  const AppTabRoute({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: TabRouter(),
+    );
+  }
+}
+
+class Routing extends StatelessWidget {
+  const Routing({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: "p3",
+      routes: {
+        "p1": ((context) => Button1()),
+        "p2": ((context) => Button2()),
+        "p3": ((context) => Button3()),
+      },
     );
   }
 }

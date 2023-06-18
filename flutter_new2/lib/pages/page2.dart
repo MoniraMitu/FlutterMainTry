@@ -14,12 +14,13 @@ class MyWidget2 extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
           body: Center(
-              child: ElevatedButton(
-        onPressed: () {
-          displayToastMassage("HIIIIIII", context);
-        },
-        child: Text("click here"),
-      ))),
+        child: ElevatedButton(
+          onPressed: () {
+            displayToastMassage("HIIIIIII", context);
+          },
+          child: Text("click here"),
+        ),
+      )),
     );
   }
 }
