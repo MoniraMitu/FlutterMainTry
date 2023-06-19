@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_new2/buttonPage2.dart';
 import 'package:flutter_new2/buttonPage3.dart';
 import 'package:flutter_new2/buttonPge1.dart';
+import 'package:flutter_new2/logIn.dart';
 import 'package:flutter_new2/pages/page1.dart';
 import 'package:flutter_new2/pages/page3.dart';
+import 'package:flutter_new2/registration.dart';
 import 'package:flutter_new2/tabRouting.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -50,11 +52,12 @@ class Routing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "p3",
+      initialRoute: "/p4",
       routes: {
-        "p1": ((context) => Button1()),
-        "p2": ((context) => Button2()),
-        "p3": ((context) => Button3()),
+        "/p1": ((context) => Button1()),
+        "/p2": ((context) => Button2()),
+        "/p3": ((context) => Button3()),
+        "/p4": ((context) => Registration()),
       },
     );
   }

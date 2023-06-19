@@ -3,6 +3,17 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_new2/main.dart';
 
+class LogInForm extends StatelessWidget {
+  const LogInForm({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: LogIn(),
+    );
+  }
+}
+
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
 
@@ -71,36 +82,33 @@ class _LogInState extends State<LogIn> {
                 height: 10.0,
               ),
               TextButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24.0)
-                            )
-                            )
-                            ),
-                            child: Container( 
-                              height: 50.0,
-                              child: Text(
-                                "Log IN"
-                                style: const TextStyle(
-                                  fontSize: 18.0,
-                                  COLOR:Colors.pink,
-
-                                ),
-                                 ),
-                            ),
-                            onPressed: () {
-                              if (!email.text.contains("@")){
-                                displayToastMassage("Invalid email", BuildContext);
-                              }else if(password.text.length<3){
-                                displayToastMassage("Invalid password", BuildContext);}
-                                {
-                                  displayToastMassage("Hello !! ${email.text} !! ${password.text}")
-                                }
-                              }
-                            
-              )
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24.0)))),
+                  child: Container(
+                    height: 50.0,
+                    child: Text(
+                      "Log IN",
+                      style: const TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.pink,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (!email.text.contains("@")) {
+                      displayToastMassage("Invalid email", BuildContext);
+                    } else if (password.text.length < 3) {
+                      displayToastMassage("Invalid password", BuildContext);
+                    }
+                    {
+                      displayToastMassage(
+                          "Hello !! ${email.text} !! ${password.text}",
+                          BuildContext);
+                    }
+                  })
             ]),
           )
         ]),
