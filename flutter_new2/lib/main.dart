@@ -9,6 +9,8 @@ import 'package:flutter_new2/registration.dart';
 import 'package:flutter_new2/tabRouting.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'list.dart';
+
 void main() {
   runApp(Routing());
 }
@@ -52,12 +54,13 @@ class Routing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "/p4",
+      initialRoute: "/p5",
       routes: {
         "/p1": ((context) => Button1()),
         "/p2": ((context) => Button2()),
         "/p3": ((context) => Button3()),
         "/p4": ((context) => Registration()),
+        "/p5": ((context) => MyWidget11()),
       },
     );
   }

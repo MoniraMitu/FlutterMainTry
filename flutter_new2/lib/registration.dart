@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:http/http.dart' as http;
 
 class Registration extends StatefulWidget {
   const Registration({super.key});
@@ -265,6 +268,22 @@ class _SignUpFormState extends State<SignUpForm> {
       //   ),
       //       (route) =>false,
       // );
+      // }
+
+      final String url = 'http://192.168.20.46:8080/api/posts';
+      var reqBody = {
+        "title": _email,
+        "body": _name,
+      };
+      var response = await http.post(Uri.parse(url),
+          headers: {"Content-Type": "application/json"},
+          body: jsonEncode(reqBody));
+
+      var jsonResponse = jsonDecode(response.body);
+      // if (jsonResponse['status']) {
+      //   print('Data Submitted');
+      // } else {
+      //   print('something went wrong');
       // }
     }
 
