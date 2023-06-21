@@ -270,7 +270,7 @@ class _SignUpFormState extends State<SignUpForm> {
       // );
       // }
 
-      final String url = 'http://192.168.20.46:8080/api/posts';
+      final String url = 'http://192.168.20.38:8080/api/posts';
       var reqBody = {
         "title": _email,
         "body": _name,

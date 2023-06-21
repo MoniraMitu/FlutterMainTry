@@ -54,13 +54,13 @@ class Routing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "/p5",
+      initialRoute: "/p1",
       routes: {
-        "/p1": ((context) => Button1()),
+        "/p1": ((context) => MyWidget11()),
         "/p2": ((context) => Button2()),
         "/p3": ((context) => Button3()),
         "/p4": ((context) => Registration()),
-        "/p5": ((context) => MyWidget11()),
+        "/p5": ((context) => Button2()),
       },
     );
   }
