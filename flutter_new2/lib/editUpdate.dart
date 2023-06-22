@@ -5,32 +5,28 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_new2/Model/post.dart';
 import 'package:flutter_new2/list.dart';
-import 'package:flutter_new2/service/service.dart';
 import 'package:http/http.dart' as http;
 
-class Registration extends StatefulWidget {
+class EditPage extends StatefulWidget {
+  // const editPage({super.key});
   final Post? postModel;
-  Registration({this.postModel});
+  EditPage({this.postModel});
 
   @override
-  State<Registration> createState() => _RegistrationState();
+  State<EditPage> createState() => _EditPageState();
 }
 
-class _RegistrationState extends State<Registration> {
+class _EditPageState extends State<EditPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Registration Form"),
+        title: Text("Edit Form"),
         centerTitle: true,
       ),
       body: Container(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-        child: widget.postModel == null
-            ? SignUpForm()
-            : SignUpForm(
-                postModel2: widget.postModel,
-              ),
+        child: SignUpForm(postModel2: widget.postModel),
       ),
     );
   }
@@ -38,6 +34,7 @@ class _RegistrationState extends State<Registration> {
 
 class SignUpForm extends StatefulWidget {
   // const SignUpForm({super.key});
+
   final Post? postModel2;
   SignUpForm({this.postModel2});
 
@@ -79,6 +76,18 @@ class _SignUpFormState extends State<SignUpForm> {
   int _id = 0;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    if (widget.postModel2 != null) {
+      _name = widget.postModel2!.title.toString();
+      _email = widget.postModel2!.body.toString();
+      _id = widget.postModel2!.id!;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     loadGenderList();
     return Form(
@@ -90,7 +99,9 @@ class _SignUpFormState extends State<SignUpForm> {
 
   List<Widget> getFormWidget() {
     List<Widget> formWidget = [];
+
     formWidget.add(TextFormField(
+      initialValue: _name,
       decoration:
           const InputDecoration(labelText: 'Enter name', hintText: 'Name'),
       validator: (value) {
@@ -111,6 +122,7 @@ class _SignUpFormState extends State<SignUpForm> {
       // },
     ));
     formWidget.add(TextFormField(
+      initialValue: _email,
       decoration:
           const InputDecoration(labelText: 'Enter email', hintText: 'Email'),
       keyboardType: TextInputType.emailAddress,
@@ -260,6 +272,7 @@ class _SignUpFormState extends State<SignUpForm> {
         ),
         (route) => false,
       );
+
       print("Name " + _name);
       print("Email " + _email);
       print("Age " + _age.toString());
@@ -274,17 +287,6 @@ class _SignUpFormState extends State<SignUpForm> {
           print("Gender Others");
           break;
       }
-
-      Post ps = new Post();
-      ps.title = _name;
-      ps.body = _email;
-
-      if (widget.postModel2 != null) {
-        ps.id = _id;
-      }
-
-      (await Service().createPost(ps));
-
       print("Marital Status " + _maritalStatus);
       print("Password " + _password);
       print("Termschecked " + _termsChecked.toString());
@@ -317,11 +319,18 @@ class _SignUpFormState extends State<SignUpForm> {
     }
 
     formWidget.add(ElevatedButton(
-        child: const Text('Sign Up'), onPressed: onPressedSubmit));
+        child: const Text('Update'), onPressed: onPressedSubmit));
 
     formWidget.add(ElevatedButton(
         child: const Text('Home'),
         onPressed: () {
+          Navigator.pushAndRemoveUntil<dynamic>(
+            context,
+            MaterialPageRoute<dynamic>(
+              builder: (BuildContext context) => MyWidget11(),
+            ),
+            (route) => false,
+          );
           // Navigator.pushAndRemoveUntil<dynamic>(context,
           //   MaterialPageRoute<dynamic>(
           //     builder: (BuildContext context) =>Home(),

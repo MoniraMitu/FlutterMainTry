@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_new2/Model/post.dart';
+import 'package:flutter_new2/editUpdate.dart';
 import 'package:flutter_new2/list.dart';
 import 'package:http/http.dart';
 import 'package:flutter_new2/service/service.dart';
@@ -36,11 +37,28 @@ class editList extends StatelessWidget {
                 onPressed: () async {
                   (await Service().deletePosts(edit!.id));
                   // print("Delete Call!");
+
+                  Navigator.pushAndRemoveUntil<dynamic>(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                      builder: (BuildContext context) => MyWidget11(),
+                    ),
+                    (route) => false,
+                  );
                 },
                 child: Icon(Icons.delete)),
             TextButton(
                 onPressed: () {
                   print("Update Call!");
+
+                  Navigator.pushAndRemoveUntil<dynamic>(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                      builder: (BuildContext context) =>
+                          EditPage(postModel: edit),
+                    ),
+                    (route) => false,
+                  );
                 },
                 child: Icon(Icons.update)),
           ],

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import '../Model/post.dart';
@@ -33,6 +34,20 @@ class Service {
       }
     } catch (e) {
       log(e.toString());
+    }
+  }
+
+  Future<List<Post>?> createPost(Post posts) async {
+    var url = Uri.parse('http://192.168.20.38:8080/api/posts');
+    var response = await http.post(
+      url,
+      headers: {"Content-type": "application/json"},
+      body: jsonEncode(posts),
+    );
+    if (response.statusCode == 200) {
+      print("Update submitted");
+    } else {
+      throw Exception("Failed to load post");
     }
   }
 }

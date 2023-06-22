@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_new2/edit.dart';
+import 'package:flutter_new2/registration.dart';
 import 'package:flutter_new2/service/service.dart';
 
 import 'Model/post.dart';
